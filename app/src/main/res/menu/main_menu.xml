@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_mydraws"
+            android:icon="@drawable/home_icon"
+            android:title="My Draws" />
+
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/home_icon"
+            android:title="Add UPI Detail" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/home_icon"
+            android:title="Logout" />
+    </group>
+
+</menu>

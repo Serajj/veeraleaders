@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PaymentActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+        android:background="@drawable/payment_success"
+        android:gravity="center"
+        android:id="@+id/payment_success_layout"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payment Successfull !"
+            android:textAlignment="center"
+            android:fontFamily="@font/coresanscrbold"
+            android:textSize="26sp"
+            android:layout_marginTop="150dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Home"
+            android:layout_marginTop="50dp"
+            android:onClick="goHome"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/payment_failed"
+        android:gravity="center"
+        android:id="@+id/payment_failed_layout"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payment Failed, Try again !"
+            android:textAlignment="center"
+            android:fontFamily="@font/coresanscrbold"
+            android:textSize="26sp"
+            android:layout_marginTop="150dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Home"
+            android:layout_marginTop="50dp"
+            android:onClick="goHome"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
