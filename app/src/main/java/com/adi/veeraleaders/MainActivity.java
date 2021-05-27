@@ -22,7 +22,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.adi.veeraleaders.fragment.HomeFragment;
 import com.adi.veeraleaders.fragment.MyDrawFragment;
+import com.adi.veeraleaders.fragment.MyProfileFragment;
 import com.adi.veeraleaders.fragment.ProfileFragment;
+import com.adi.veeraleaders.fragment.ReferFragment;
 import com.adi.veeraleaders.model.User;
 import com.adi.veeraleaders.retrofit.APIClient;
 import com.adi.veeraleaders.ui.LoginActivity;
@@ -131,6 +133,30 @@ public class MainActivity extends AppCompatActivity {
                         FragmentManager manager1 = getSupportFragmentManager();
                         FragmentTransaction transaction1 = manager1.beginTransaction();
                         transaction1.replace(R.id.main_frame, new MyDrawFragment()).commit();
+
+
+//                        menu.findItem(R.id.nav_logout).setVisible(false);
+//                        menu.findItem(R.id.nav_profile).setVisible(false);
+//                        menu.findItem(R.id.nav_login).setVisible(true);
+                        break;
+
+                    case R.id.nav_profile:
+                        home=false;
+                        FragmentManager manager_pro = getSupportFragmentManager();
+                        FragmentTransaction transaction_pro = manager_pro.beginTransaction();
+                        transaction_pro.replace(R.id.main_frame, new MyProfileFragment()).commit();
+
+
+//                        menu.findItem(R.id.nav_logout).setVisible(false);
+//                        menu.findItem(R.id.nav_profile).setVisible(false);
+//                        menu.findItem(R.id.nav_login).setVisible(true);
+                        break;
+
+                    case R.id.nav_refer:
+                        home=false;
+                        FragmentManager manager_refer = getSupportFragmentManager();
+                        FragmentTransaction transaction_refer = manager_refer.beginTransaction();
+                        transaction_refer.replace(R.id.main_frame, new ReferFragment()).commit();
 
 
 //                        menu.findItem(R.id.nav_logout).setVisible(false);

@@ -10,6 +10,11 @@
             android:title="Home" />
 
         <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/home_icon"
+            android:title="Profile" />
+
+        <item
             android:id="@+id/nav_mydraws"
             android:icon="@drawable/home_icon"
             android:title="My Draws" />
@@ -18,6 +23,11 @@
             android:id="@+id/nav_history"
             android:icon="@drawable/home_icon"
             android:title="Add UPI Detail" />
+
+        <item
+            android:id="@+id/nav_refer"
+            android:icon="@drawable/home_icon"
+            android:title="Refer and Earn" />
 
         <item
             android:id="@+id/nav_logout"
