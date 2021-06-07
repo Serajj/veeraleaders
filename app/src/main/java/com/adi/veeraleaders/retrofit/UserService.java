@@ -6,6 +6,7 @@ import com.adi.veeraleaders.model.MyDrawResponse;
 import com.adi.veeraleaders.model.Slider;
 import com.adi.veeraleaders.model.TrasactionResponse;
 import com.adi.veeraleaders.model.UserResponce;
+import com.adi.veeraleaders.model.coupon.CouponResponse;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -35,6 +36,9 @@ public interface UserService {
 
     @POST("login_user.php")
     Call<UserResponce> login(@Body RequestBody requestBody);
+
+    @POST("checkReferal.php")
+    Call<CouponResponse> checkCoupon(@Body RequestBody requestBody);
 
     @POST("drawenroll.php")
     Call<JsonObject> getEnroll(@Body RequestBody requestBody);

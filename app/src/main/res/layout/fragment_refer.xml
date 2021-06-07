@@ -59,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GMDS234"
+                android:id="@+id/referal"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -67,6 +68,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/copyReferal"
                 android:text="Copy code"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
@@ -76,6 +78,7 @@
         </FrameLayout>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/refer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle"
@@ -84,7 +87,7 @@
             android:gravity="center"
             android:textSize="22sp"
             android:layout_margin="25dp"
-            android:padding="10dp"/>
+            android:padding="10dp" />
 
     </LinearLayout>
 
