@@ -47,7 +47,7 @@ public class BetActivity extends AppCompatActivity {
         id = i.getStringExtra("did");
         amount=i.getStringExtra("amt");
 
-        payBtn.setText(amount +" ₹");
+        payBtn.setText(amount +" ₹ ");
         clickListeners();
     }
 
