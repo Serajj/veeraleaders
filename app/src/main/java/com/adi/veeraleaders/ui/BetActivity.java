@@ -2,14 +2,11 @@ package com.adi.veeraleaders.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -19,12 +16,9 @@ import android.widget.Toast;
 
 import com.adi.veeraleaders.R;
 import com.adi.veeraleaders.model.User;
-import com.adi.veeraleaders.model.UserResponce;
 import com.adi.veeraleaders.model.coupon.CouponResponse;
 import com.adi.veeraleaders.retrofit.APIClient;
 import com.adi.veeraleaders.utiles.SessionManager;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
@@ -80,6 +74,87 @@ public class BetActivity extends AppCompatActivity {
 
         payBtn.setText(" ₹ "+amount);
         clickListeners();
+        initDialog();
+    }
+
+    private void initDialog() {
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.apply_coupun);
+
+        EditText couponcode = dialog.findViewById(R.id.cccode);
+        TextView showresult = dialog.findViewById(R.id.couponresult);
+        TextView apply = dialog.findViewById(R.id.applybtn);
+        TextView closebtn = dialog.findViewById(R.id.closebtn);
+
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BetActivity.this, "Checking..", Toast.LENGTH_SHORT).show();
+                String code = couponcode.getText().toString();
+                if (TextUtils.isEmpty(code))
+                {
+                    showresult.setVisibility(View.VISIBLE);
+                    showresult.setText("Please enter code first");
+                    showresult.setTextColor(Color.RED);
+                }
+                else
+                {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("uid", user.getId());
+                        jsonObject.put("ref_code", code);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+                    RequestBody bodyRequest = RequestBody.create(MediaType.parse(jsons), jsonObject.toString());
+                    Call<CouponResponse> call = APIClient.getInterface().checkCoupon(bodyRequest);
+
+                    call.enqueue(new Callback<CouponResponse>() {
+                        @Override
+                        public void onResponse(Call<CouponResponse> call, Response<CouponResponse> response) {
+                            CouponResponse couponResponse= response.body();
+                            if (couponResponse.getResult()){
+                                showresult.setVisibility(View.VISIBLE);
+                                showresult.setText(""+couponResponse.getResponseMsg());
+                                showresult.setTextColor(Color.GREEN);
+                                int saved=(int) (Double.parseDouble(amount) * Integer.parseInt(couponResponse.getDiscount())/100);
+                                int newamt = Integer.parseInt(amount) - saved;
+                                payBtn.setText(" ₹ "+ newamt );
+                                showresult.setText(""+couponResponse.getResponseMsg()+" You saved "+ saved);
+                                showresult.setTextColor(Color.GREEN);
+                                amount=newamt+"";
+
+                            }else{
+                                showresult.setVisibility(View.VISIBLE);
+                                showresult.setText(""+couponResponse.getResponseMsg());
+                                showresult.setTextColor(Color.RED);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<CouponResponse> call, Throwable t) {
+
+                        }
+                    });
+
+
+                }
+            }
+        });
+
+        closebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dialog.isShowing()){
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        dialog.create();
     }
 
     private void clickListeners() {
@@ -201,65 +276,6 @@ public class BetActivity extends AppCompatActivity {
 
     public void coupon(View view) {
         Toast.makeText(this, "Coupon", Toast.LENGTH_SHORT).show();
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.apply_coupun);
-
-        EditText couponcode = dialog.findViewById(R.id.cccode);
-        TextView showresult = dialog.findViewById(R.id.couponresult);
-        TextView apply = dialog.findViewById(R.id.applybtn);
-
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = couponcode.getText().toString();
-                if (TextUtils.isEmpty(code))
-                {
-                    showresult.setText("Please enter code first");
-                    showresult.setTextColor(Color.RED);
-                }
-                else
-                {
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("uid", user.getId());
-                        jsonObject.put("ref_code", code);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-                    RequestBody bodyRequest = RequestBody.create(MediaType.parse(jsons), jsonObject.toString());
-                    Call<CouponResponse> call = APIClient.getInterface().checkCoupon(bodyRequest);
-
-                    call.enqueue(new Callback<CouponResponse>() {
-                        @Override
-                        public void onResponse(Call<CouponResponse> call, Response<CouponResponse> response) {
-                            CouponResponse couponResponse= response.body();
-                            if (couponResponse.getResult()){
-                                showresult.setText(""+couponResponse.getResponseMsg());
-                                showresult.setTextColor(Color.GREEN);
-                            }else{
-                                showresult.setText(""+couponResponse.getResponseMsg());
-                                showresult.setTextColor(Color.RED);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<CouponResponse> call, Throwable t) {
-
-                        }
-                    });
-
-
-                }
-            }
-        });
-
-
-        dialog.create();
         dialog.show();
-
     }
 }

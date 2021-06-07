@@ -9,8 +9,6 @@ import com.adi.veeraleaders.model.UserResponce;
 import com.adi.veeraleaders.model.coupon.CouponResponse;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import okhttp3.MultipartBody;

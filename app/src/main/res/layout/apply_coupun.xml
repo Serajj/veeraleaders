@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/cccode"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:hint="Enter Phone or Email"
-        android:inputType="phone"
-        android:padding="10dp"
-        android:textColor="@color/black" />
+
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/cccode"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:padding="5dp"
+            android:hint="Enter coupon code"
+            android:inputType="text"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/applybtn"
+            android:layout_width="100dp"
+            android:layout_height="52dp"
+            android:layout_marginLeft="10dp"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:background="@drawable/rounded_button"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/couponresult"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:visibility="invisible"
-        android:padding="10dp"
+        android:textSize="10sp"
         android:text="Code Applied"/>
 
 
-
-    <TextView
-        android:id="@+id/applybtn"
-        android:layout_width="100dp"
-        android:layout_height="52dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/rounded_button"
-        android:gravity="center"
-        android:text="Apply"
-        android:layout_gravity="end"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
-
-
-
-
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:id="@+id/closebtn"
+        android:layout_height="30dp"
+        android:gravity="start"
+        android:textColor="#DD2C00"
+        android:textAlignment="textStart"
+        android:visibility="visible"
+        android:textSize="16sp"
+        android:text="Close"/>
 </LinearLayout>

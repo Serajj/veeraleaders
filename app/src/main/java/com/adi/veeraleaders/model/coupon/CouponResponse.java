@@ -1,16 +1,19 @@
 
 package com.adi.veeraleaders.model.coupon;
 
-import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class CouponResponse {
 
-    @SerializedName("data")
+    @SerializedName("discount")
     @Expose
-    private List<Datum> data = null;
+    private String discount;
+    @SerializedName("status")
+    @Expose
+    private String status;
     @SerializedName("ResponseCode")
     @Expose
     private String responseCode;
@@ -21,12 +24,20 @@ public class CouponResponse {
     @Expose
     private String responseMsg;
 
-    public List<Datum> getData() {
-        return data;
+    public String getDiscount() {
+        return discount;
     }
 
-    public void setData(List<Datum> data) {
-        this.data = data;
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getResponseCode() {
