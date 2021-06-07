@@ -46,7 +46,7 @@ public class BetActivity extends AppCompatActivity {
         titleTv.setText(i.getStringExtra("title"));
         id = i.getStringExtra("did");
         amount=i.getStringExtra("amt");
-
+        payBtn.setText(amount);
         clickListeners();
     }
 
@@ -64,8 +64,6 @@ public class BetActivity extends AppCompatActivity {
                 optF.setBackground(getResources().getDrawable(R.drawable.opt_background));
                 number=optA.getText().toString();
                 selNum.setText(number);
-
-
 
             }
         });
