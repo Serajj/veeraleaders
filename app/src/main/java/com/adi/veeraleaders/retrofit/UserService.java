@@ -4,9 +4,11 @@ package com.adi.veeraleaders.retrofit;
 import com.adi.veeraleaders.model.DrawResponse;
 import com.adi.veeraleaders.model.MyDrawResponse;
 import com.adi.veeraleaders.model.Slider;
+import com.adi.veeraleaders.model.Token_Res;
 import com.adi.veeraleaders.model.TrasactionResponse;
 import com.adi.veeraleaders.model.UserResponce;
 import com.adi.veeraleaders.model.coupon.CouponResponse;
+
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -83,4 +85,17 @@ public interface UserService {
                                 @Part("description") RequestBody description,
                                 @Part("size") RequestBody size,
                                 @Part List<MultipartBody.Part> parts);
+
+
+
+    @POST("init_Transaction.php")
+    Call<Token_Res> generateTokenCall(@Body RequestBody requestBody);
+
+    /**
+     *
+     *
+     *             @Part("code") String language,
+     *             @Part("MID") String mid,
+     *             @Part("ORDER_ID") String order_id,
+     *             @Part("AMOUNT") String amount**/
 }

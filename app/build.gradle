@@ -71,6 +71,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     //razorpay
     implementation 'com.razorpay:checkout:1.6.6'
+    //paytm payment gateway
+    implementation 'com.paytm.appinvokesdk:appinvokesdk:1.6.0'
 
 
 

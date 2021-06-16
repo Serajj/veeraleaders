@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.adi.veeraleaders">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_final"
@@ -11,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_final_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ui.PaytmActivity"></activity>
         <activity android:name=".ui.PaymentActivity" />
         <activity android:name=".ui.BetActivity" />
         <activity android:name=".MainActivity" />
@@ -29,5 +28,7 @@
             </intent-filter>
         </service>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

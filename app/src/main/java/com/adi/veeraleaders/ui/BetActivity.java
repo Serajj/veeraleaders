@@ -264,7 +264,8 @@ public class BetActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(BetActivity.this,PaymentActivity.class);
+                //Intent i = new Intent(BetActivity.this,PaymentActivity.class);
+                Intent i = new Intent(BetActivity.this,PaytmActivity.class);
                 i.putExtra("amount",amount);
                 i.putExtra("qid",id);
                 i.putExtra("option",number);
